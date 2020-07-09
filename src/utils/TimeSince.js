@@ -1,66 +1,17 @@
+import * as dayjs from 'dayjs';
+import 'dayjs/locale/ru';
+
 export default (date) => {
-    if (typeof date !== 'object') {
-        date = new Date(date);
-    }
+    const relativeTime = require('dayjs/plugin/relativeTime');
+    dayjs.extend(relativeTime);
 
-    let seconds = Math.floor((new Date() - date) / 1000);
-    let intervalType;
+    const dateNow = dayjs();
+    const diffInMinutes = dayjs(dateNow).diff(date, 'm');
+    const interval = Math.floor(diffInMinutes / 60);
 
-    let interval = Math.floor(seconds / 31536000);
-
-    if (interval === 1) {
-        intervalType = 'год назад';
-    } else if (interval > 1 && interval < 5) {
-        intervalType = 'года назад';
-    } else if (interval >= 5) {
-        intervalType = 'лет назад';
+    if (interval < 24) {
+        return dayjs(date).fromNow(false);
     } else {
-        interval = Math.floor(seconds / 2592000);
-        if (interval === 1) {
-            intervalType = 'месяц назад';
-        } else if (interval > 1 && interval < 5) {
-            intervalType = 'месяца назад';
-        } else if (interval >= 5) {
-            intervalType = 'месяцев назад';
-        } else {
-            interval = Math.floor(seconds / 86400);
-            if (interval === 1) {
-                intervalType = 'день назад';
-            } else if (interval > 1 && interval < 5) {
-                intervalType = 'дня назад';
-            } else if (interval >= 5) {
-                intervalType = 'дней назад';
-            } else {
-                interval = Math.floor(seconds / 3600);
-                if (interval === 1) {
-                    intervalType = 'час назад';
-                } else if (interval > 1 && interval < 5) {
-                    intervalType = 'часа назад';
-                } else if (interval >= 5) {
-                    intervalType = 'часов назад';
-                } else {
-                    interval = Math.floor(seconds / 60);
-                    if (interval === 1) {
-                        intervalType = 'минута назад';
-                    } else if (interval > 1 && interval < 5) {
-                        intervalType = 'минуты назад';
-                    } else if (interval >= 5) {
-                        intervalType = 'минут назад';
-                    } else {
-                        interval = seconds;
-
-                        if (interval === 1) {
-                            intervalType = 'секунда назад';
-                        } else if (interval > 1 && interval < 5) {
-                            intervalType = 'секунды назад';
-                        } else if (interval >= 5) {
-                            intervalType = 'секунд назад';
-                        }
-                    }
-                }
-            }
-        }
+        return dayjs(date).format('DD.MM.YYYY H:mm');
     }
-
-    return interval !== 0 ? interval + ' ' + intervalType : 'Только что';
 }

@@ -7,7 +7,7 @@ const COMMENTS = [
     {
         name: 'Michelle Moreno',
         message: 'Have sent a photo',
-        date: '2020-07-08 23:51',
+        date: '2020-07-09 14:08',
     },
     {
         name: 'Diane Myers',

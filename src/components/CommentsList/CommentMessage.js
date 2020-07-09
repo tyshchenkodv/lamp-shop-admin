@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { TimeSince } from "../../utils";
 
-export default class CommentMessage extends Component {
+export default class CommentMessage extends PureComponent {
 
     render() {
         const { comment } = this.props;

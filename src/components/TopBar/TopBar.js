@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import CommentsList from "../CommentsList";
 
-export default class TopBar extends Component {
+export default class TopBar extends PureComponent {
     render() {
         return (
             <header className='header-desktop'>
