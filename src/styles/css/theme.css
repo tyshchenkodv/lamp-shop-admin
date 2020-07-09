@@ -1346,6 +1346,7 @@ section {
     margin-right: 35px;
     display: inline-block;
     cursor: pointer;
+    float: right;
 }
 
 @media (max-width: 1200px) {
@@ -1931,7 +1932,8 @@ section {
 
 .mess-dropdown {
     top: 49px;
-    left: -55px;
+    left: auto;
+    right: 0;
 }
 
 .mess__item {
