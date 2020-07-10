@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import CommentsList from "../CommentsList";
+import UserDropdown from "../UserDropdown";
 import OrdersList from "../OrdersList";
 
 export default class TopBar extends PureComponent {
@@ -13,6 +14,7 @@ export default class TopBar extends PureComponent {
                                 <div className='noti-wrap'>
                                     <CommentsList/>
                                     <OrdersList/>
+                                    <UserDropdown/>
                                 </div>
                             </div>
                         </div>
