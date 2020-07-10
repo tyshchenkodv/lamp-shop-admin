@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import CommentsList from "../CommentsList";
+import UserDropdown from "../UserDropdown";
 
 export default class TopBar extends PureComponent {
     render() {
@@ -9,6 +10,7 @@ export default class TopBar extends PureComponent {
                     <div className='container-fluid'>
                         <div className='header-wrap'>
                             <CommentsList/>
+                            <UserDropdown/>
                         </div>
                     </div>
                 </div>
