@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import cx from "classnames";
-import avatar01 from "./../../styles/images/icon/avatar-01.jpg";
+
+const NAME = 'John Doe';
+const EMAIL = 'johndoe@example.com';
 
 export default class UserDropdown extends PureComponent {
     state = {
@@ -41,24 +43,16 @@ export default class UserDropdown extends PureComponent {
         return(
             <div className="account-wrap">
                 <div className={cx("account-item clearfix js-item-menu", {"show-dropdown":this.state.open})}>
-                    <div className="image">
-                        <img src={avatar01} alt="John Doe"/>
-                    </div>
                     <div className="content">
-                        <a className="js-acc-btn" onClick={ this.toggle } ref={ this.setButtonRef }>john doe</a>
+                        <a className="js-acc-btn" onClick={ this.toggle } ref={ this.setButtonRef }>{ NAME }</a>
                     </div>
                     <div className="account-dropdown js-dropdown" ref={ this.setWrapperRef }>
                         <div className="info clearfix">
-                            <div className="image">
-                                <a href="#">
-                                    <img src={avatar01} alt="John Doe"/>
-                                </a>
-                            </div>
                             <div className="content">
                                 <h5 className="name">
-                                    <a href="#">john doe</a>
+                                    <a href="#">{ NAME }</a>
                                 </h5>
-                                <span className="email">johndoe@example.com</span>
+                                <span className="email">{ EMAIL }</span>
                             </div>
                         </div>
                         <div className="account-dropdown__body">
@@ -72,8 +66,8 @@ export default class UserDropdown extends PureComponent {
                             </div>
                         </div>
                         <div className="account-dropdown__footer">
-                            <a href="#">
-                                <i className="zmdi zmdi-power"/>Logout</a>
+                            <button type="button">
+                                <i className="zmdi zmdi-power"/>Logout</button>
                         </div>
                     </div>
                 </div>
