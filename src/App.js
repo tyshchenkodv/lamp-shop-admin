@@ -7,7 +7,7 @@ import MenuSidebar from "./components/MenuSidebar";
 import Home from "./pages/Home";
 import Comments from "./pages/Comments";
 import Orders from "./pages/Orders";
-import AddProduct from "./pages/AddProduct";
+import Products from "./pages/Products";
 
 export default class App extends PureComponent {
     render() {
@@ -20,7 +20,7 @@ export default class App extends PureComponent {
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/comments" component={Comments}/>
                         <Route exact path="/orders" component={Orders}/>
-                        <Route exact path="/addproduct" component={AddProduct}/>
+                        <Route exact path="/products" component={Products}/>
                     </Switch>
                 </BrowserRouter>
             </>

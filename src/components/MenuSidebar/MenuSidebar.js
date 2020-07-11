@@ -24,8 +24,8 @@ export default class MenuSidebar extends PureComponent{
                                     <i className="zmdi zmdi-comment-more"/>Комментарии</NavLink>
                             </li>
                             <li>
-                                <NavLink exact to="/addproduct">
-                                    <i className="zmdi zmdi-shopping-cart-plus"/>Добавление товара</NavLink>
+                                <NavLink exact to="/products">
+                                    <i className="zmdi zmdi-archive"/>Товары</NavLink>
                             </li>
                         </ul>
                     </nav>
