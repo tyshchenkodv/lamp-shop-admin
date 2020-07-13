@@ -1,11 +1,28 @@
 import React, { PureComponent } from 'react';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 import TopBar from './components/TopBar';
+import MenuSidebar from "./components/MenuSidebar";
+
+import Home from "./pages/Home";
+import Comments from "./pages/Comments";
+import Orders from "./pages/Orders";
+import Products from "./pages/Products";
 
 export default class App extends PureComponent {
-    render () {
+    render() {
         return (
             <>
-                <TopBar/>
+                <BrowserRouter>
+                    <TopBar/>
+                    <MenuSidebar/>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/comments" component={Comments}/>
+                        <Route exact path="/orders" component={Orders}/>
+                        <Route exact path="/products" component={Products}/>
+                    </Switch>
+                </BrowserRouter>
             </>
         );
     };

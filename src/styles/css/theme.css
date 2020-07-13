@@ -50,6 +50,8 @@ Notes:	decreasing heading by 0.4em with every subsequent heading level
 
 ul {
     margin: 0;
+    padding-left: 0;
+    list-style: none;
 }
 
 button,
@@ -1634,6 +1636,7 @@ section {
     color: #555;
     font-size: 16px;
     padding: 15px 0;
+    text-decoration: none;
 }
 
 .navbar-sidebar .navbar__list li a i {
