@@ -1,12 +1,9 @@
 import React, { PureComponent } from "react";
 import cx from "classnames";
+import { connect } from "react-redux";
+import { logout } from "../../actions/login";
 
-const user = {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-};
-
-export default class UserDropdown extends PureComponent {
+class UserDropdown extends PureComponent {
     state = {
         open: false,
     };
@@ -41,18 +38,24 @@ export default class UserDropdown extends PureComponent {
         }));
     };
 
+    logout = () => {
+        this.props.logout();
+    }
+
     render() {
+        const { user } = this.props;
+
         return(
             <div className="account-wrap">
                 <div className={cx("account-item clearfix js-item-menu", {"show-dropdown":this.state.open})}>
                     <div className="content">
-                        <a className="js-acc-btn" onClick={ this.toggle } ref={ this.setButtonRef }>{ user.name }</a>
+                        <a className="js-acc-btn" onClick={ this.toggle } ref={ this.setButtonRef }>{ user.firstName }</a>
                     </div>
                     <div className="account-dropdown js-dropdown" ref={ this.setWrapperRef }>
                         <div className="info clearfix">
                             <div className="content">
                                 <h5 className="name">
-                                    <a href="#">{ user.name }</a>
+                                    <a href="#">{ user.firstName }</a>
                                 </h5>
                                 <span className="email">{ user.email }</span>
                             </div>
@@ -68,7 +71,7 @@ export default class UserDropdown extends PureComponent {
                             </div>
                         </div>
                         <div className="account-dropdown__footer">
-                            <button type="button">
+                            <button type="button" onClick={ this.logout }>
                                 <i className="zmdi zmdi-power"/>Logout</button>
                         </div>
                     </div>
@@ -77,3 +80,10 @@ export default class UserDropdown extends PureComponent {
         );
     };
 }
+
+export default connect(
+    null,
+    (dispatch) => ({
+        logout: () => dispatch(logout()),
+    }),
+)(UserDropdown);
