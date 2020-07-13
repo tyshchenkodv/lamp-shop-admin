@@ -5,7 +5,6 @@ import {
     LOGOUT_SUCCESS,
 } from '../actions/login';
 import jwt from "jsonwebtoken";
-import { auth } from "../config/config.json";
 
 export const INITIAL_STATE = {
     user: {},
@@ -27,7 +26,7 @@ export default function Auth (state = INITIAL_STATE, action) {
 
             window.localStorage.setItem('access_token', token);
 
-            const decoded = jwt.verify(token, auth.secret);
+            const decoded = jwt.verify(token, process.env.REACT_APP_AUTH_SECRET);
             const user = {
                 id: decoded.id,
                 email: decoded.email,

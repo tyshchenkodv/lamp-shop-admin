@@ -5,22 +5,6 @@ import logo from './../../styles/images/icon/logo.png';
 import { connect } from "react-redux";
 
 class Login extends PureComponent {
-    checkAuth(){
-        const { isLoggedIn } = this.props;
-
-        if(isLoggedIn === true) {
-            this.props.history.push('/');
-        }
-    }
-
-    componentDidMount() {
-        this.checkAuth();
-    };
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.checkAuth();
-    }
-
     render() {
         return (
             <div className="page-wrapper">

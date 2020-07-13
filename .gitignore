@@ -11,3 +11,4 @@
 # config
 /config/*
 !/config/*.example
+.env.local

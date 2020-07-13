@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 
 import TopBar from './components/TopBar';
@@ -13,10 +13,12 @@ import Login from "./pages/Login";
 
 class App extends PureComponent {
     checkAuth = () => {
-        const { isLoggedIn } = this.props;
+        const { isLoggedIn, location: { pathname }, history } = this.props;
 
-        if (isLoggedIn === false) {
-            //this.props.history.push('/login');
+        if (!isLoggedIn && pathname !== '/login') {
+            history.push('/login');
+        } else if (isLoggedIn && pathname === '/login') {
+            history.push('/');
         }
     }
 
@@ -47,9 +49,9 @@ class App extends PureComponent {
     };
 }
 
-export default connect(
+export default withRouter(connect(
     (store) => ({
         isLoggedIn: store.auth.isLoggedIn,
         user: store.auth.user,
     }),
-)(App);
+)(App));
