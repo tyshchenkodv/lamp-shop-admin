@@ -8,7 +8,4 @@
 # production
 /build
 
-# config
-/config/*
-!/config/*.example
 .env.local

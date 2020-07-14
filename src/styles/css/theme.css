@@ -338,6 +338,11 @@ section {
     height: 100vh;
 }
 
+.page-content--bge5 .container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .login-wrap {
     max-width: 540px;
     padding-top: 8vh;

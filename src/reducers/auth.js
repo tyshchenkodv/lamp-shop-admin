@@ -7,9 +7,9 @@ import {
 import jwt from "jsonwebtoken";
 
 export const INITIAL_STATE = {
-    user: {},
-    isLoggedIn: false,
     loading: false,
+    isLoggedIn: false,
+    user: {},
     token: '',
 };
 
