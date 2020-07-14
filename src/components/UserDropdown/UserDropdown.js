@@ -1,9 +1,7 @@
 import React, { PureComponent } from "react";
 import cx from "classnames";
-import { connect } from "react-redux";
-import { logout } from "../../actions/login";
 
-class UserDropdown extends PureComponent {
+export default class UserDropdown extends PureComponent {
     state = {
         open: false,
     };
@@ -38,12 +36,8 @@ class UserDropdown extends PureComponent {
         }));
     };
 
-    logout = () => {
-        this.props.logout();
-    }
-
     render() {
-        const { user } = this.props;
+        const { user, logout } = this.props;
 
         return(
             <div className="account-wrap">
@@ -71,7 +65,7 @@ class UserDropdown extends PureComponent {
                             </div>
                         </div>
                         <div className="account-dropdown__footer">
-                            <button type="button" onClick={ this.logout }>
+                            <button type="button" onClick={ logout }>
                                 <i className="zmdi zmdi-power"/>Logout</button>
                         </div>
                     </div>
@@ -80,10 +74,3 @@ class UserDropdown extends PureComponent {
         );
     };
 }
-
-export default connect(
-    null,
-    (dispatch) => ({
-        logout: () => dispatch(logout()),
-    }),
-)(UserDropdown);

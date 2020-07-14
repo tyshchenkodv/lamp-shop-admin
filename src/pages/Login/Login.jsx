@@ -1,11 +1,14 @@
 import React, { PureComponent } from 'react';
-import LoginForm from "../../components/LoginForm";
+import LoginForm from './LoginForm';
 
 import logo from './../../styles/images/icon/logo.png';
 import { connect } from "react-redux";
+import { login } from "../../actions/login";
 
 class Login extends PureComponent {
     render() {
+        const { loading, login } = this.props;
+
         return (
             <div className="page-wrapper">
                 <div className="page-content--bge5">
@@ -18,7 +21,7 @@ class Login extends PureComponent {
                                     </a>
                                 </div>
                                 <div className="login-form">
-                                    <LoginForm/>
+                                    <LoginForm loading={ loading } login={ login }/>
                                 </div>
                             </div>
                         </div>
@@ -31,6 +34,9 @@ class Login extends PureComponent {
 
 export default connect(
     (store) => ({
-        isLoggedIn: store.auth.isLoggedIn,
+        loading: store.auth.loading,
+    }),
+    (dispatch) => ({
+        login: (data) => dispatch(login(data)),
     }),
 )(Login);

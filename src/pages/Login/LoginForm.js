@@ -1,9 +1,7 @@
 import React, { PureComponent } from "react";
 import { Form, Field } from 'react-final-form';
-import { login } from "../../actions/login";
-import { connect } from 'react-redux';
 
-class LoginForm extends PureComponent {
+export default class LoginForm extends PureComponent {
     onSubmit = (values) => {
         this.props.login(values);
     };
@@ -48,12 +46,3 @@ class LoginForm extends PureComponent {
         );
     };
 }
-
-export default connect(
-    (store) => ({
-        loaded: store.loaded,
-    }),
-    (dispatch) => ({
-        login: (data) => dispatch(login(data)),
-    })
-)(LoginForm);

@@ -6,7 +6,7 @@ import OrdersList from "../OrdersList";
 
 export default class TopBar extends PureComponent {
     render() {
-        const { user } = this.props;
+        const { user, logout } = this.props;
 
         return (
             <header className='header-desktop'>
@@ -17,7 +17,7 @@ export default class TopBar extends PureComponent {
                                 <div className='noti-wrap'>
                                     <CommentsList/>
                                     <OrdersList/>
-                                    <UserDropdown user={ user }/>
+                                    <UserDropdown user={ user } logout={ logout }/>
                                 </div>
                             </div>
                         </div>

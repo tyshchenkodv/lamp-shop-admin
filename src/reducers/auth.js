@@ -33,8 +33,6 @@ export default function Auth (state = INITIAL_STATE, action) {
                 firstName: decoded.firstName,
             };
 
-            console.log(user);
-
             return Object.assign({}, state, {
                 loading: false,
                 isLoggedIn: true,

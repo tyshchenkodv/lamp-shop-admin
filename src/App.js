@@ -10,6 +10,7 @@ import Comments from "./pages/Comments";
 import Orders from "./pages/Orders";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
+import { logout } from "./actions/login";
 
 class App extends PureComponent {
     checkAuth = () => {
@@ -31,18 +32,18 @@ class App extends PureComponent {
     }
 
     render() {
-        const {isLoggedIn, user} = this.props;
+        const { isLoggedIn, user, logout } = this.props;
 
         return (
             <>
-                {isLoggedIn && <TopBar user={user}/>}
+                {isLoggedIn && <TopBar user={ user } logout={ logout }/>}
                 {isLoggedIn && <MenuSidebar/>}
                 <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/comments" component={Comments}/>
-                    <Route exact path="/orders" component={Orders}/>
-                    <Route exact path="/products" component={Products}/>
-                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/" component={ Home }/>
+                    <Route exact path="/comments" component={ Comments }/>
+                    <Route exact path="/orders" component={ Orders }/>
+                    <Route exact path="/products" component={ Products }/>
+                    <Route exact path="/login" component={ Login }/>
                 </Switch>
             </>
         );
@@ -53,5 +54,8 @@ export default withRouter(connect(
     (store) => ({
         isLoggedIn: store.auth.isLoggedIn,
         user: store.auth.user,
+    }),
+    (dispatch) => ({
+        logout: () => dispatch(logout()),
     }),
 )(App));
