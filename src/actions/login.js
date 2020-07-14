@@ -13,7 +13,7 @@ export function login (data) {
         });
 
         try {
-            const response = await axios.post('http://localhost:3001/login', data);
+            const response = await axios.post(process.env.REACT_APP_API_HOST+'/login', data);
 
             return dispatch({
                 type: LOGIN_SUCCESS,

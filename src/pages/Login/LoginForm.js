@@ -7,7 +7,7 @@ export default class LoginForm extends PureComponent {
     };
 
     render() {
-        const { loaded } = this.props;
+        const { loading } = this.props;
 
         return (
             <Form onSubmit={ this.onSubmit }
@@ -29,16 +29,9 @@ export default class LoginForm extends PureComponent {
                                      placeholder="Пароль"
                                      component="input"/>
                           </div>
-                          <div className="form-group login-checkbox">
-                              <label>
-                                  <Field type="checkbox"
-                                         name="remember"
-                                         component="input"/>Запомнить меня
-                              </label>
-                          </div>
                           <button className="au-btn au-btn--block au-btn--green m-b-20"
                                   type="submit"
-                                  disabled={ loaded }>Войти
+                                  disabled={ loading }>Войти
                           </button>
                       </form>
                   )}
