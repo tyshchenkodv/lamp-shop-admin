@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
+
 import CommentsList from "../CommentsList";
 import UserDropdown from "../UserDropdown";
 import OrdersList from "../OrdersList";
 
 export default class TopBar extends PureComponent {
     render() {
+        const { user, logout } = this.props;
+
         return (
             <header className='header-desktop'>
                 <div className='section__content section__content--p30'>
@@ -14,7 +17,7 @@ export default class TopBar extends PureComponent {
                                 <div className='noti-wrap'>
                                     <CommentsList/>
                                     <OrdersList/>
-                                    <UserDropdown/>
+                                    <UserDropdown user={ user } logout={ logout }/>
                                 </div>
                             </div>
                         </div>
