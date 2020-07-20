@@ -3,3 +3,8 @@
 @import "bootstrap-datetimepicker.min.css";
 @import "material-design-iconic-font.css";
 @import "bootstrap-datetimepicker.min.css";
+
+.articlesForm {
+    width: fit-content;
+    margin: 100px 300px;
+}

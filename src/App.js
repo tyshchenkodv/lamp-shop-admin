@@ -10,6 +10,7 @@ import Comments from "./pages/Comments";
 import Orders from "./pages/Orders";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
+import Articles from "./pages/Articles";
 import { logout } from "./actions/login";
 
 class App extends PureComponent {
@@ -43,6 +44,7 @@ class App extends PureComponent {
                     <Route exact path="/comments" component={ Comments }/>
                     <Route exact path="/orders" component={ Orders }/>
                     <Route exact path="/products" component={ Products }/>
+                    <Route exact path="/articles" component={ Articles }/>
                     <Route exact path="/login" component={ Login }/>
                 </Switch>
             </>
