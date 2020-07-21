@@ -3,12 +3,12 @@ import { Form, Field } from 'react-final-form';
 
 export default class NewArticle extends PureComponent {
     onSubmit = (values) => {
-        let formData = new FormData();
+        const formData = new FormData();
 
-        formData.append('title', values.title);
-        formData.append('metaDescription', values.metaDescription);
-        formData.append('text', values.text);
-        formData.append('image', values.image[0]);
+        values.title && formData.append('title', values.title);
+        values.metaDescription && formData.append('metaDescription', values.metaDescription);
+        values.text && formData.append('text', values.text);
+        values.image && formData.append('image', values.image[0]);
 
         this.props.createArticle(formData);
     };

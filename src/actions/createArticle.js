@@ -13,10 +13,10 @@ export function createArticle (formData) {
         try {
 
             const response = await axios.post(process.env.REACT_APP_API_HOST + '/articles',
-                {data: formData},
+                formData,
                 {
                     headers: {
-                        'Content-Type': 'multipart/form-data, boundary=--abc--abc',
+                        'Content-Type': 'multipart/form-data',
                         'access_token': window.localStorage.getItem('access_token'),
                     }
                 },
