@@ -11,14 +11,16 @@ export function createArticle (formData) {
         });
 
         try {
-            const headers = {
-                'Content-Type': 'multipart/form-data',
-                'access_token': window.localStorage.getItem('access_token'),
-            };
-            const response = await axios.post(process.env.REACT_APP_API_HOST+'/articles',
-                formData, {
-                headers
-                });
+
+            const response = await axios.post(process.env.REACT_APP_API_HOST + '/articles',
+                {data: formData},
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data, boundary=--abc--abc',
+                        'access_token': window.localStorage.getItem('access_token'),
+                    }
+                },
+            );
 
             return dispatch({
                 type: CREATE_SUCCESS,

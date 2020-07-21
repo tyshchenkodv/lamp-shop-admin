@@ -48,7 +48,7 @@ export default class NewArticle extends PureComponent {
                               <Field name="image">
                                   {({input: {value, onChange, ...input}}) => {
                                       const handleChange = ({target}) => {
-                                          onChange(target.files) // instead of the default target.value
+                                          onChange(target.files)
                                       }
                                       return <input {...input} type="file" onChange={handleChange}/>
                                   }}
