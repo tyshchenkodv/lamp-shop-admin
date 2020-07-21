@@ -3,6 +3,9 @@
 @import "bootstrap-datetimepicker.min.css";
 @import "material-design-iconic-font.css";
 @import "bootstrap-datetimepicker.min.css";
+@import "bootstrap.css";
+@import "bootstrap-grid.css";
+@import "bootstrap-reboot.css";
 
 .articlesForm {
     width: fit-content;

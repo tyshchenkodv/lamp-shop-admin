@@ -5,7 +5,7 @@ import NewArticle from "./NewArticle";
 
 class Articles extends PureComponent{
     render() {
-        const { loading, createArticle} = this.props;
+        const {loading, createArticle} = this.props;
         return(
             <div className="articlesForm">
                 <NewArticle loading={ loading } createArticle={ createArticle }/>
