@@ -7,7 +7,7 @@ const minValue = min => value =>
 const composeValidators = (...validators) => value =>
     validators.reduce((error, validator) => error || validator(value), undefined);
 
-export default class NewArticle extends PureComponent {
+export default class CreateArticle extends PureComponent {
     onSubmit = (values) => {
         const formData = new FormData();
 

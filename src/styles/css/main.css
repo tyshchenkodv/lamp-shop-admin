@@ -7,7 +7,6 @@
 @import "bootstrap-grid.css";
 @import "bootstrap-reboot.css";
 
-.articlesForm {
-    width: fit-content;
-    margin: 100px 300px;
+.contentBlock {
+    margin: 85px 10px 0 310px;
 }
