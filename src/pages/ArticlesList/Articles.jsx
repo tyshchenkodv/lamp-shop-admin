@@ -18,7 +18,7 @@ class Articles extends PureComponent{
 
 export default withRouter(connect(
     (store) => ({
-        loading: store.loadArticles.loading,
+        loading: store.article.loading,
     }),
     (dispatch) => ({
         loadArticles: () => dispatch(loadArticles()),

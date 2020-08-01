@@ -77,8 +77,8 @@ export default class ArticlesList extends PureComponent {
                                     <StyledTableCell align="left">{row.text}</StyledTableCell>
                                     <StyledTableCell align="right">
                                         <button className="au-btn au-btn--block au-btn--green m-b-20"
-                                                type="submit"
-                                                onClick={routeChange(row.id)}>Добавить
+                                                type="button"
+                                                onClick={() => routeChange(row.id)}>Добавить
                                         </button>
                                     </StyledTableCell>
                                     <StyledTableCell align="right">
