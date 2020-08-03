@@ -16,7 +16,7 @@ export function loadArticles () {
 
             return dispatch({
                 type: LOAD_ARTICLES_SUCCESS,
-                data: response.data,
+                data: response.data.data,
             });
         } catch {
             return dispatch({
