@@ -24,7 +24,9 @@ export default class ArticlesList extends PureComponent {
         }
 
         const deleteArticle = (id) => {
-            this.props.deleteArticle(id);
+            if (window.confirm("Точно удалить статью?")) {
+                this.props.deleteArticle(id);
+            }
         }
 
         return (
@@ -38,6 +40,12 @@ export default class ArticlesList extends PureComponent {
                     ]}
                     data={ list }
                     actions={[
+                        {
+                            icon: 'add',
+                            tooltip: 'Добавить статью',
+                            isFreeAction: true,
+                            onClick: (event) => routeChange('new'),
+                        },
                         rowData => ({
                             icon: 'edit',
                             tooltip: 'Редактировать',
