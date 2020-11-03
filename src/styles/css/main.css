@@ -3,3 +3,10 @@
 @import "bootstrap-datetimepicker.min.css";
 @import "material-design-iconic-font.css";
 @import "bootstrap-datetimepicker.min.css";
+@import "bootstrap.css";
+@import "bootstrap-grid.css";
+@import "bootstrap-reboot.css";
+
+.contentBlock {
+    margin: 85px 10px 10px 310px;
+}
