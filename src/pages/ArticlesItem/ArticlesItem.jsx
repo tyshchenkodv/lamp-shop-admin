@@ -18,6 +18,7 @@ class ArticlesItem extends PureComponent {
 
     render() {
         const { type } = this.state;
+        const { createArticle } = this.props;
 
         return(
             <div className='contentBlock'>

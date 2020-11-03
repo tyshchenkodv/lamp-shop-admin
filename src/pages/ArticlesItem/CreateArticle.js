@@ -17,11 +17,10 @@ export default class CreateArticle extends PureComponent {
         values.image && formData.append('image', values.image[0]);
 
         this.props.createArticle(formData);
-        alert('Запись успешно добавлена!');
     };
 
     render() {
-        const {loading} = this.props;
+        const { loading } = this.props;
 
         return (
             <Form onSubmit={this.onSubmit}
