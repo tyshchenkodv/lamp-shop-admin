@@ -56,7 +56,7 @@ export default function Article (state = INITIAL_STATE, action) {
                 item: action.data,
                 loading: false,
             });
-
+        
         case CREATE_SUCCESS:
             return Object.assign({}, state, {
                 loading: false,
