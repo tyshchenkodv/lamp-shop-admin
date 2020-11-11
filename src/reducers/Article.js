@@ -5,6 +5,12 @@ import {
 } from '../actions/loadArticles';
 
 import {
+    LOAD_ARTICLE_REQUEST,
+    LOAD_ARTICLE_SUCCESS,
+    LOAD_ARTICLE_ERROR,
+} from '../actions/loadArticle';
+
+import {
     CREATE_REQUEST,
     CREATE_SUCCESS,
     CREATE_ERROR,
@@ -23,6 +29,7 @@ import {
 } from '../actions/deleteArticle';
 
 export const INITIAL_STATE = {
+    item: {},
     list: [],
     loading: false,
 };
@@ -30,6 +37,7 @@ export const INITIAL_STATE = {
 export default function Article (state = INITIAL_STATE, action) {
     switch (action.type) {
         case LOAD_ARTICLES_REQUEST:
+        case LOAD_ARTICLE_REQUEST:
         case CREATE_REQUEST:
         case UPDATE_REQUEST:
         case DELETE_REQUEST:
@@ -43,6 +51,12 @@ export default function Article (state = INITIAL_STATE, action) {
                 loading: false,
             });
 
+        case LOAD_ARTICLE_SUCCESS:
+            return Object.assign({}, state, {
+                item: action.data,
+                loading: false,
+            });
+        
         case CREATE_SUCCESS:
             return Object.assign({}, state, {
                 loading: false,
@@ -59,6 +73,7 @@ export default function Article (state = INITIAL_STATE, action) {
             });
 
         case LOAD_ARTICLES_ERROR:
+        case LOAD_ARTICLE_ERROR:
         case CREATE_ERROR:
         case UPDATE_ERROR:
         case DELETE_ERROR:

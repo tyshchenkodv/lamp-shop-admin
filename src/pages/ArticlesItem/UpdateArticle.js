@@ -7,7 +7,7 @@ const minValue = min => value =>
 const composeValidators = (...validators) => value =>
     validators.reduce((error, validator) => error || validator(value), undefined);
 
-export default class CreateArticle extends PureComponent {
+export default class UpdateArticle extends PureComponent {
     onSubmit = (values) => {
         const formData = new FormData();
 
@@ -16,32 +16,35 @@ export default class CreateArticle extends PureComponent {
         values.text && formData.append('text', values.text);
         values.image && formData.append('image', values.image[0]);
 
-        this.props.createArticle(formData);
+        this.props.updateArticle(formData, this.props.article.id);
         alert('Статья успешно обновлена');
         this.props.history.goBack();
     };
 
     render() {
-        const {loading} = this.props;
+        const { loading, article } = this.props;
 
         return (
-            <Form onSubmit={this.onSubmit}
-                  render={({handleSubmit, values}) => (
-                      <form onSubmit={handleSubmit}>
-                          <Field name="title"
-                                 validate={composeValidators(required, minValue(5))}>
-                              {
-                                  ({input, meta}) => (
-                                      <div className="form-group">
-                                          <label>Название</label>
-                                          <input {...input}
-                                                 type="text"
-                                                 placeholder="Название"
-                                                 className="au-input au-input--full"/>
-                                          {meta.error && meta.touched && <span>{meta.error}</span>}
-                                      </div>
-                                  )
-                              }
+            <Form initialValues={
+                    article
+                }
+                onSubmit={this.onSubmit}
+                render={({handleSubmit, values}) => (
+                    <form onSubmit={handleSubmit}>
+                        <Field name="title"
+                               validate={composeValidators(required, minValue(5))}>
+                            {
+                                ({input, meta}) => (
+                                    <div className="form-group">
+                                        <label>Название</label>
+                                        <input {...input}
+                                               type="text"
+                                               placeholder="Название"
+                                               className="au-input au-input--full"/>
+                                               {meta.error && meta.touched && <span>{meta.error}</span>}
+                                    </div>
+                                )
+                            }
                           </Field>
                           <Field name="metaDescription"
                                  validate={composeValidators(required, minValue(5))}>
@@ -91,7 +94,7 @@ export default class CreateArticle extends PureComponent {
                           </Field>
                           <button className="au-btn au-btn--block au-btn--green m-b-20"
                                   type="submit"
-                                  disabled={loading}>Добавить
+                                  disabled={loading}>Редактировать
                           </button>
                       </form>
                   )}
