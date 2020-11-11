@@ -67,8 +67,8 @@ export default class UpdateArticle extends PureComponent {
                                   ({input, meta}) => (
                                       <div className="form-group">
                                           <label>Текст статьи</label>
-                                          <input {...input}
-                                                 type="text"
+                                          <textarea {...input}
+                                                 rows="10"
                                                  placeholder="Текст статьи"
                                                  className="au-input au-input--full"/>
                                           {meta.error && meta.touched && <span>{meta.error}</span>}
@@ -94,7 +94,7 @@ export default class UpdateArticle extends PureComponent {
                           </Field>
                           <button className="au-btn au-btn--block au-btn--green m-b-20"
                                   type="submit"
-                                  disabled={loading}>Добавить
+                                  disabled={loading}>Редактировать
                           </button>
                       </form>
                   )}

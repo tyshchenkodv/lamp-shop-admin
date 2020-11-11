@@ -64,8 +64,8 @@ export default class CreateArticle extends PureComponent {
                                   ({input, meta}) => (
                                       <div className="form-group">
                                           <label>Текст статьи</label>
-                                          <input {...input}
-                                                 type="text"
+                                          <textarea {...input}
+                                                 rows="10"
                                                  placeholder="Текст статьи"
                                                  className="au-input au-input--full"/>
                                           {meta.error && meta.touched && <span>{meta.error}</span>}
