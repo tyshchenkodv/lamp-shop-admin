@@ -1,20 +1,8 @@
 import React, { PureComponent } from "react";
 import CommentMessage from "./CommentMessage";
 import cx from 'classnames';
-import { CommentLengthSuffix } from "./../../utils";
-
-const COMMENTS = [
-    {
-        name: 'Michelle Moreno',
-        message: 'Have sent a photo',
-        date: '2020-07-09 14:08',
-    },
-    {
-        name: 'Diane Myers',
-        message: 'You are now connected on message',
-        date: '2020-07-06 13:20',
-    },
-];
+import {CommentLengthSuffix, TimeSince} from "./../../utils";
+import { NavLink } from "react-router-dom";
 
 export default class CommentsList extends PureComponent {
     state = {
@@ -52,19 +40,26 @@ export default class CommentsList extends PureComponent {
     };
 
     render() {
+        const { comments } = this.props;
         return (
             <>
                 <div className={cx("noti__item js-item-menu", {"show-dropdown":this.state.open})}>
                     <button onClick={ this.toggle } ref={ this.setButtonRef }>
                         <i className="zmdi zmdi-comment-more"/>
                     </button>
-                    { COMMENTS.length > 0 && <span className="quantity">{COMMENTS.length}</span> }
+                    { comments.length > 0 && <span className="quantity">{comments.length}</span> }
                     <div className="mess-dropdown js-dropdown" ref={ this.setWrapperRef }>
                         <div className="mess__title">
-                            <p>{ CommentLengthSuffix(COMMENTS.length) }</p>
+                            <p>{ CommentLengthSuffix(comments.length) }</p>
                         </div>
-                        {COMMENTS.map((comment, index) => (
-                            <CommentMessage key={ index } comment={ comment } />
+                        {comments.map((comment, index) => (
+                            <div className="mess__item">
+                                <div className="content">
+                                    <NavLink exact to="/comments" onClick={()=>this.toggle()}>
+                                        <CommentMessage key={ index } comment={ comment } />
+                                    </NavLink>
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </div>

@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Articles from "./pages/ArticlesList";
 import ArticlesItem from "./pages/ArticlesItem";
 import { logout } from "./actions/login";
+import { loadComments } from "./actions/loadComments";
 
 class App extends PureComponent {
     checkAuth = () => {
@@ -27,6 +28,7 @@ class App extends PureComponent {
 
     componentDidMount() {
         this.checkAuth();
+        this.props.loadComments();
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -34,11 +36,13 @@ class App extends PureComponent {
     }
 
     render() {
-        const { isLoggedIn, user, logout } = this.props;
+        const { isLoggedIn, user, logout, comments } = this.props;
+
+        console.log(comments);
 
         return (
             <>
-                {isLoggedIn && <TopBar user={ user } logout={ logout }/>}
+                {isLoggedIn && <TopBar user={ user } logout={ logout } comments={ comments }/>}
                 {isLoggedIn && <MenuSidebar/>}
                 <Switch>
                     <Route exact path="/" component={ Home }/>
@@ -58,8 +62,10 @@ export default withRouter(connect(
     (store) => ({
         isLoggedIn: store.auth.isLoggedIn,
         user: store.auth.user,
+        comments: store.comment.list,
     }),
     (dispatch) => ({
         logout: () => dispatch(logout()),
+        loadComments: () => dispatch(loadComments()),
     }),
 )(App));
