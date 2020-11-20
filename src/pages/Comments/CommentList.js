@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import MaterialTable from 'material-table';
 
-export default class ArticlesList extends PureComponent {
+export default class CommentList extends PureComponent {
     state = {
         pageSize: 5,
     }
 
     componentDidMount() {
-        this.props.loadArticles();
+        this.props.loadComments();
     }
 
     setPageSize(pageSize) {
@@ -15,17 +15,18 @@ export default class ArticlesList extends PureComponent {
     }
 
     render() {
-        const {history, loading, list} = this.props;
-        const {pageSize} = this.state;
+        const { loading, comments } = this.props;
+        const { pageSize } = this.state;
 
-        const routeChange = (id) => {
-            let path = `/articles/${id}`;
-            history.push(path);
+        const applyComment = (id) => {
+            if (window.confirm("Точно отобразить комментарий?")) {
+                this.props.applyComment(id);
+            }
         }
 
-        const deleteArticle = (id) => {
-            if (window.confirm("Точно удалить статью?")) {
-                this.props.deleteArticle(id);
+        const deleteComment = (id) => {
+            if (window.confirm("Точно удалить комментарий?")) {
+                this.props.deleteComment(id);
             }
         }
 
@@ -33,28 +34,22 @@ export default class ArticlesList extends PureComponent {
             <>
                 {!loading &&
                 <MaterialTable
-                    title="Статьи"
+                    title="Комментарии"
                     columns={[
-                        {title: 'Название', field: 'title', width: 300},
-                        {title: 'Текст статьи', field: 'text',},
+                        {title: 'Имя', field: 'name', width: 300},
+                        {title: 'Текст комментария', field: 'text',},
                     ]}
-                    data={ list }
+                    data={ comments }
                     actions={[
-                        {
-                            icon: 'add',
-                            tooltip: 'Добавить статью',
-                            isFreeAction: true,
-                            onClick: (event) => routeChange('new'),
-                        },
                         rowData => ({
-                            icon: 'edit',
-                            tooltip: 'Редактировать',
-                            onClick: (event, rowData) => routeChange(rowData.id),
+                            icon: 'apply',
+                            tooltip: 'Подтвердить',
+                            onClick: (event, rowData) => applyComment(rowData.id),
                         }),
                         rowData => ({
                             icon: 'delete',
                             tooltip: 'Удалить',
-                            onClick: (event, rowData) => deleteArticle(rowData.id),
+                            onClick: (event, rowData) => deleteComment(rowData.id),
                         }),
                     ]}
                     onChangeRowsPerPage={(items) => this.setPageSize(items)}

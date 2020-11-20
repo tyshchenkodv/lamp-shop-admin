@@ -37,12 +37,10 @@ class App extends PureComponent {
 
     render() {
         const { isLoggedIn, user, logout, comments } = this.props;
-
-        console.log(comments);
-
+        const newComments = comments.filter((comment) => comment.processed === 'new');
         return (
             <>
-                {isLoggedIn && <TopBar user={ user } logout={ logout } comments={ comments }/>}
+                {isLoggedIn && <TopBar user={ user } logout={ logout } comments={ newComments }/>}
                 {isLoggedIn && <MenuSidebar/>}
                 <Switch>
                     <Route exact path="/" component={ Home }/>
