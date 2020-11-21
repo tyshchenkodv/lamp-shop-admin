@@ -3,7 +3,7 @@ import MaterialTable from 'material-table';
 
 export default class ArticlesList extends PureComponent {
     state = {
-        pageSize: 5,
+        pageSize: 10,
     }
 
     componentDidMount() {

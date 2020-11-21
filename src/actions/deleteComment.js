@@ -1,20 +1,19 @@
 import axios from 'axios';
 import { loadComments } from './loadComments';
 
-export const APPLY_COMMENT_REQUEST = 'APPLY_COMMENT_REQUEST';
-export const APPLY_COMMENT_SUCCESS = 'APPLY_COMMENT_SUCCESS';
-export const APPLY_COMMENT_ERROR = 'APPLY_COMMENT_ERROR';
+export const DELETE_COMMENT_REQUEST = 'DELETE_COMMENT_REQUEST';
+export const DELETE_COMMENT_SUCCESS = 'DELETE_COMMENT_SUCCESS';
+export const DELETE_COMMENT_ERROR = 'DELETE_COMMENT_ERROR';
 
-export function applyComment (comment) {
+export function deleteComment (id) {
     return async function (dispatch) {
         dispatch({
-            type: APPLY_COMMENT_REQUEST,
+            type: DELETE_COMMENT_REQUEST,
         });
 
         try {
 
-            const response = await axios.put(process.env.REACT_APP_API_HOST + `/comments/${comment.id}`,
-                comment,
+            const response = await axios.delete(process.env.REACT_APP_API_HOST + `/comments/${id}`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -24,12 +23,12 @@ export function applyComment (comment) {
             );
 
             return dispatch(loadComments({
-                type: APPLY_COMMENT_SUCCESS,
+                type: DELETE_COMMENT_SUCCESS,
                 data: response.data,
             }));
         } catch {
             return dispatch({
-                type: APPLY_COMMENT_ERROR,
+                type: DELETE_COMMENT_ERROR,
             });
         }
     };

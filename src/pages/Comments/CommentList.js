@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import MaterialTable from 'material-table';
+import { NavLink } from 'react-router-dom';
 
 export default class CommentList extends PureComponent {
     state = {
-        pageSize: 5,
+        pageSize: 10,
     }
 
     componentDidMount() {
@@ -18,9 +19,10 @@ export default class CommentList extends PureComponent {
         const { loading, comments } = this.props;
         const { pageSize } = this.state;
 
-        const applyComment = (id) => {
+        const applyComment = (comment) => {
+            comment.processed = 'displayed';
             if (window.confirm("Точно отобразить комментарий?")) {
-                this.props.applyComment(id);
+                this.props.applyComment(comment);
             }
         }
 
@@ -38,13 +40,20 @@ export default class CommentList extends PureComponent {
                     columns={[
                         {title: 'Имя', field: 'name', width: 300},
                         {title: 'Текст комментария', field: 'text',},
+                        {
+                            title: 'Название продукта',
+                            field: 'product',
+                            width: 300,
+                            render: rowData => <NavLink exact to={`/product/${rowData.product.id}`}>{rowData.product.name}</NavLink>
+                        }
                     ]}
                     data={ comments }
                     actions={[
                         rowData => ({
-                            icon: 'apply',
-                            tooltip: 'Подтвердить',
-                            onClick: (event, rowData) => applyComment(rowData.id),
+                            icon: rowData.processed === 'displayed' ? 'check' : 'add',
+                            tooltip: rowData.processed === 'displayed' ? 'Опубликован' : 'Опубликовать',
+                            onClick: (event, rowData) => applyComment(rowData),
+                            disabled: rowData.processed === 'displayed',
                         }),
                         rowData => ({
                             icon: 'delete',

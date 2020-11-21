@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import CommentMessage from "./CommentMessage";
 import cx from 'classnames';
-import {CommentLengthSuffix, TimeSince} from "./../../utils";
+import { CommentLengthSuffix } from "./../../utils";
 import { NavLink } from "react-router-dom";
 
 export default class CommentsList extends PureComponent {

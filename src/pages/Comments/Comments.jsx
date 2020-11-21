@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadComments } from "../../actions/loadComments";
+import { applyComment} from "../../actions/applyComment";
+import { deleteComment } from "../../actions/deleteComment";
 
 import CommentList from "./CommentList";
 
@@ -29,5 +31,7 @@ export default withRouter(connect(
     }),
     (dispatch) => ({
         loadComments: () => dispatch(loadComments()),
+        applyComment: (comment) => dispatch(applyComment(comment)),
+        deleteComment: (id) => dispatch(deleteComment(id)),
     }),
 )(Comments));
