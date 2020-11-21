@@ -12,6 +12,6 @@ export default (date) => {
     if (interval < 24) {
         return dayjs(date).fromNow(false);
     } else {
-        return dayjs(date).format('DD.MM.YYYY H:mm');
+        return dayjs(date).format('DD.MM.YYYY');
     }
 }

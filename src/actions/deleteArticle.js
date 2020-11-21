@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {loadArticles} from "./loadArticles";
+import { loadArticles } from "./loadArticles";
 
 export const DELETE_REQUEST = 'DELETE_REQUEST';
 export const DELETE_SUCCESS = 'DELETE_SUCCESS';

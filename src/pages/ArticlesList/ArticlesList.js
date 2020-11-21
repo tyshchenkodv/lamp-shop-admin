@@ -3,7 +3,7 @@ import MaterialTable from 'material-table';
 
 export default class ArticlesList extends PureComponent {
     state = {
-        pageSize: 5,
+        pageSize: 10,
     }
 
     componentDidMount() {
@@ -63,6 +63,9 @@ export default class ArticlesList extends PureComponent {
                         search: true,
                         actionsColumnIndex: -1,
                         tableLayout: 'fixed',
+                        headerStyle: {
+                            zIndex: '0',
+                        },
                         cellStyle: {
                             textOverflow: "ellipsis",
                             whiteSpace: "pre",
