@@ -8,7 +8,7 @@ import MenuSidebar from "./components/MenuSidebar";
 import Home from "./pages/Home";
 import Comments from "./pages/Comments";
 import Orders from "./pages/Orders";
-import Products from "./pages/Products";
+import Products from "./pages/ProductsList";
 import Login from "./pages/Login";
 import Articles from "./pages/ArticlesList";
 import ArticlesItem from "./pages/ArticlesItem";
