@@ -44,7 +44,7 @@ export default class CommentList extends PureComponent {
                             title: 'Название продукта',
                             field: 'product',
                             width: 300,
-                            render: rowData => <NavLink exact to={`/product/${rowData.product.id}`}>{rowData.product.name}</NavLink>
+                            render: rowData => <NavLink exact to={`/products`}>{rowData.product.name}</NavLink>
                         }
                     ]}
                     data={ comments }
