@@ -37,6 +37,8 @@ export default class ArticlesList extends PureComponent {
                     columns={[
                         {title: 'Название', field: 'title', width: 300},
                         {title: 'Текст статьи', field: 'text',},
+                        {title: 'Тип', field: 'type', width: 150,},
+                        {title: 'Дата публикации', field: 'publicationDate', defaultSort: 'desc', width: 200,},
                     ]}
                     data={ list }
                     actions={[
