@@ -15,6 +15,7 @@ export default class CreateProduct extends PureComponent {
         values.description && formData.append('description', values.description);
         values.code && formData.append('code', values.code);
         values.price && formData.append('price', values.price);
+        values.promotionalPrice && formData.append('promotionalPrice', values.promotionalPrice);
         values.availability && formData.append('availability', values.availability);
         values.count && formData.append('count', values.count);
         values.category && formData.append('categoryId', values.category);
@@ -83,6 +84,20 @@ export default class CreateProduct extends PureComponent {
                                   ({input, meta}) => (
                                       <div className="form-group">
                                           <label>Цена товара</label>
+                                          <input {...input}
+                                                 type="text"
+                                                 placeholder="Цена товара"
+                                                 className="au-input w-15 m-l-10"/>
+                                          {meta.error && meta.touched && <span>{meta.error}</span>}
+                                      </div>
+                                  )
+                              }
+                          </Field>
+                          <Field name="promotionalPrice">
+                              {
+                                  ({input, meta}) => (
+                                      <div className="form-group">
+                                          <label>Акционная цена товара</label>
                                           <input {...input}
                                                  type="text"
                                                  placeholder="Цена товара"

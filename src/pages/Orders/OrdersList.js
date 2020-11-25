@@ -40,6 +40,7 @@ export default class OrdersList extends PureComponent {
                             lookup: {
                                 'Новый': 'Новый',
                                 'Обработанный': 'Обработанный',
+                                'Возврат': 'Возврат',
                                 'Выполненный': 'Выполненный',
                             },
                         },
@@ -59,8 +60,9 @@ export default class OrdersList extends PureComponent {
                     detailPanel={rowData => {
                         return (
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Адрес доставки: {rowData.deliveryAdress}</li>
-                                <li className="list-group-item">Служба доставки: {rowData.deliveryName}</li>
+                                <li className="list-group-item">Адрес доставки: {rowData.customer.address1}</li>
+                                <li className="list-group-item">Город: {rowData.customer.city}</li>
+                                <li className="list-group-item">Тип доставки: {rowData.deliveryType}</li>
                                 <li className="list-group-item">Тип оплаты: {rowData.paymentType}</li>
                                 <li className="list-group-item">Комментарий к заказу: {rowData.comment}</li>
                                 <li className="list-group-item">
