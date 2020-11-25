@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { loadArticles } from "./loadArticles";
 
 export const CREATE_REQUEST = 'CREATE_REQUEST';
 export const CREATE_SUCCESS = 'CREATE_SUCCESS';
@@ -22,10 +23,10 @@ export function createArticle (formData) {
                 },
             );
 
-            return dispatch({
+            return dispatch(loadArticles({
                 type: CREATE_SUCCESS,
                 data: response.data,
-            });
+            }));
         } catch {
             return dispatch({
                 type: CREATE_ERROR,

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { loadArticles } from "./loadArticles";
 
 export const UPDATE_REQUEST = 'UPDATE_REQUEST';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
@@ -22,10 +23,10 @@ export function updateArticle (formData, id) {
                 },
             );
 
-            return dispatch({
+            return dispatch(loadArticles({
                 type: UPDATE_SUCCESS,
                 data: response.data,
-            });
+            }));
         } catch {
             return dispatch({
                 type: UPDATE_ERROR,
