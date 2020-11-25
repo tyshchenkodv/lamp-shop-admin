@@ -8,12 +8,14 @@ import MenuSidebar from "./components/MenuSidebar";
 import Home from "./pages/Home";
 import Comments from "./pages/Comments";
 import Orders from "./pages/Orders";
-import Products from "./pages/Products";
+import Products from "./pages/ProductsList";
+import ProductItem from "./pages/ProductsItem";
 import Login from "./pages/Login";
 import Articles from "./pages/ArticlesList";
 import ArticlesItem from "./pages/ArticlesItem";
 import { logout } from "./actions/login";
 import { loadComments } from "./actions/loadComments";
+import { loadOrders } from "./actions/loadOrders";
 
 class App extends PureComponent {
     checkAuth = () => {
@@ -29,6 +31,7 @@ class App extends PureComponent {
     componentDidMount() {
         this.checkAuth();
         this.props.loadComments();
+        this.props.loadOrders();
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -36,17 +39,19 @@ class App extends PureComponent {
     }
 
     render() {
-        const { isLoggedIn, user, logout, comments } = this.props;
+        const { isLoggedIn, user, logout, comments, orders } = this.props;
         const newComments = comments.filter((comment) => comment.processed === 'new');
+        const newOrders = orders.filter((order) => order.status === 'Новый');
         return (
             <>
-                {isLoggedIn && <TopBar user={ user } logout={ logout } comments={ newComments }/>}
+                {isLoggedIn && <TopBar user={ user } logout={ logout } comments={ newComments } orders={ newOrders }/>}
                 {isLoggedIn && <MenuSidebar/>}
                 <Switch>
                     <Route exact path="/" component={ Home }/>
                     <Route exact path="/comments" component={ Comments }/>
                     <Route exact path="/orders" component={ Orders }/>
                     <Route exact path="/products" component={ Products }/>
+                    <Route exact path="/products/:id" component={ ProductItem }/>
                     <Route exact path="/articles" component={ Articles }/>
                     <Route exact path="/articles/:id" component={ ArticlesItem }/>
                     <Route exact path="/login" component={ Login }/>
@@ -61,9 +66,11 @@ export default withRouter(connect(
         isLoggedIn: store.auth.isLoggedIn,
         user: store.auth.user,
         comments: store.comment.list,
+        orders: store.order.list,
     }),
     (dispatch) => ({
         logout: () => dispatch(logout()),
         loadComments: () => dispatch(loadComments()),
+        loadOrders: () => dispatch(loadOrders()),
     }),
 )(App));

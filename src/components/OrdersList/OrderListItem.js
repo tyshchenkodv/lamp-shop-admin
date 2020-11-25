@@ -1,19 +1,19 @@
 import React, { PureComponent } from "react";
-import { TimeSince } from "../../utils";
 
 export default class OrderListItem extends PureComponent {
 
     render() {
-        const { order } = this.props;
-
+        const {order} = this.props;
+        const products = order.product;
+        let allProductsNames = '';
+        products.map((product) => {
+            allProductsNames += product.name + ', ';
+        })
         return (
-            <div className="mess__item">
-                <div className="content">
-                    <h6>{order.item}</h6>
-                    <p>{order.price} грн</p>
-                    <span className="time">{TimeSince(order.date)}</span>
-                </div>
-            </div>
+            <>
+                <h6>{allProductsNames.slice(0, -2)}</h6>
+                <p>{order.totalPrice} грн</p>
+            </>
         );
     };
 }
