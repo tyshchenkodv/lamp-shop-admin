@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { loadProducts } from "./loadProducts";
 
 export const CREATE_PRODUCT_REQUEST = 'CREATE_PRODUCT_REQUEST';
 export const CREATE_PRODUCT_SUCCESS = 'CREATE_PRODUCT_SUCCESS';
@@ -22,10 +23,10 @@ export function createProduct (formData) {
                 },
             );
 
-            return dispatch({
+            return dispatch(loadProducts({
                 type: CREATE_PRODUCT_SUCCESS,
                 data: response.data,
-            });
+            }));
         } catch {
             return dispatch({
                 type: CREATE_PRODUCT_ERROR,
