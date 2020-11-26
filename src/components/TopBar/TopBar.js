@@ -15,7 +15,7 @@ export default class TopBar extends PureComponent {
                         <div className='header-wrap'>
                             <div className='header-button'>
                                 <div className='noti-wrap'>
-                                    <CommentsList comments={ comments }/>
+                                    {/*<CommentsList comments={ comments }/>*/}
                                     <OrdersList orders={ orders }/>
                                     <UserDropdown user={ user } logout={ logout }/>
                                 </div>

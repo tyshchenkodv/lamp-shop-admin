@@ -6,6 +6,7 @@ import Comment from "./Comment";
 import Product from "./Product";
 import Category from "./Category";
 import Order from "./Order";
+import File from "./File";
 
 export default () => combineReducers({
     auth: Auth,
@@ -14,4 +15,5 @@ export default () => combineReducers({
     product: Product,
     category: Category,
     order: Order,
+    file: File,
 });
