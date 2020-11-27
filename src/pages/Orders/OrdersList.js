@@ -12,7 +12,7 @@ export default class OrdersList extends PureComponent {
     }
 
     render() {
-        const { orders, loading } = this.props;
+        const { orders, loading, downloadInvoice } = this.props;
         const { pageSize } = this.state;
 
         const changeStatus = (status, id) => {
@@ -91,6 +91,13 @@ export default class OrdersList extends PureComponent {
                         )
                     }}
                     onChangeRowsPerPage={(items) => this.setPageSize(items)}
+                    actions={[
+                        rowData => ({
+                            icon: 'description',
+                            tooltip: 'Создать счёт',
+                            onClick: (event, rowData) => {downloadInvoice(rowData)},
+                        }),
+                    ]}
                     options={{
                         pageSize: pageSize,
                         search: true,

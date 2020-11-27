@@ -11,18 +11,20 @@ export default class MenuSidebar extends PureComponent{
                 <div className="menu-sidebar__content js-scrollbar1">
                     <nav className="navbar-sidebar">
                         <ul className="list-unstyled navbar__list">
-                            <li>
+                            {/*<li>
                                 <NavLink exact to="/">
                                     <i className="zmdi zmdi-view-dashboard"/>Главная</NavLink>
-                            </li>
+                            </li>*/}
                             <li>
                                 <NavLink exact to="/orders">
                                     <i className="zmdi zmdi-card"/>Заказы</NavLink>
                             </li>
+                            {/*
                             <li>
                                 <NavLink exact to="/comments">
-                                    <i className="zmdi zmdi-comment-more"/>Комментарии</NavLink>
+                                <i className="zmdi zmdi-comment-more"/>Комментарии</NavLink>
                             </li>
+                            */}
                             <li>
                                 <NavLink exact to="/products">
                                     <i className="zmdi zmdi-archive"/>Товары</NavLink>

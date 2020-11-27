@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadOrders } from "../../actions/loadOrders";
 import { updateOrder } from "../../actions/updateOrder";
+import { downloadInvoice } from "../../actions/downloadInvoice";
 
 class Orders extends PureComponent {
     componentDidMount() {
@@ -11,13 +12,14 @@ class Orders extends PureComponent {
     }
 
     render () {
-        const { orders, loading, updateOrder } = this.props;
+        const { orders, loading, updateOrder, downloadInvoice } = this.props;
         return (
             <div className="contentBlock">
                 <OrdersList
                     loading={loading}
                     orders={orders}
                     updateOrder={updateOrder}
+                    downloadInvoice={downloadInvoice}
                 />
             </div>
         );
@@ -32,5 +34,6 @@ export default withRouter(connect(
     (dispatch) => ({
         loadOrders: () => dispatch(loadOrders()),
         updateOrder: (order, id) => dispatch(updateOrder(order, id)),
+        downloadInvoice: (product) => dispatch(downloadInvoice(product)),
     }),
 )(Orders));

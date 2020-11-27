@@ -47,7 +47,7 @@ class App extends PureComponent {
                 {isLoggedIn && <TopBar user={ user } logout={ logout } comments={ newComments } orders={ newOrders }/>}
                 {isLoggedIn && <MenuSidebar/>}
                 <Switch>
-                    <Route exact path="/" component={ Home }/>
+                    <Route exact path="/" component={ Orders }/>
                     <Route exact path="/comments" component={ Comments }/>
                     <Route exact path="/orders" component={ Orders }/>
                     <Route exact path="/products" component={ Products }/>

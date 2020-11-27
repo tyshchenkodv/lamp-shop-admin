@@ -54,19 +54,9 @@ export default class UserDropdown extends PureComponent {
                                 <span className="email">{ user.email }</span>
                             </div>
                         </div>
-                        <div className="account-dropdown__body">
-                            <div className="account-dropdown__item">
-                                <a href="#">
-                                    <i className="zmdi zmdi-account"/>Account</a>
-                            </div>
-                            <div className="account-dropdown__item">
-                                <a href="#">
-                                    <i className="zmdi zmdi-settings"/>Setting</a>
-                            </div>
-                        </div>
                         <div className="account-dropdown__footer">
                             <button type="button" onClick={ logout }>
-                                <i className="zmdi zmdi-power"/>Logout</button>
+                                <i className="zmdi zmdi-power"/>Выйти</button>
                         </div>
                     </div>
                 </div>
