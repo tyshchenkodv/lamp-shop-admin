@@ -13,6 +13,7 @@ import ProductItem from "./pages/ProductsItem";
 import Login from "./pages/Login";
 import Articles from "./pages/ArticlesList";
 import ArticlesItem from "./pages/ArticlesItem";
+import PurchasesFormation from "./pages/PurchasesFormation";
 import { logout } from "./actions/login";
 import { loadComments } from "./actions/loadComments";
 import { loadOrders } from "./actions/loadOrders";
@@ -55,6 +56,7 @@ class App extends PureComponent {
                     <Route exact path="/articles" component={ Articles }/>
                     <Route exact path="/articles/:id" component={ ArticlesItem }/>
                     <Route exact path="/login" component={ Login }/>
+                    <Route exact path="/purchasesFormation" component={ PurchasesFormation }/>
                 </Switch>
             </>
         );

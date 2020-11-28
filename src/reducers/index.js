@@ -7,6 +7,7 @@ import Product from "./Product";
 import Category from "./Category";
 import Order from "./Order";
 import File from "./File";
+import Purchase from "./Purchase";
 
 export default () => combineReducers({
     auth: Auth,
@@ -16,4 +17,5 @@ export default () => combineReducers({
     category: Category,
     order: Order,
     file: File,
+    purchase: Purchase,
 });
