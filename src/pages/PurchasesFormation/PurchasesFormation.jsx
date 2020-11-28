@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadCategories } from "../../actions/loadCategories";
-import {loadPurchases} from "../../actions/loadPurchases";
+import { loadPurchases } from "../../actions/loadPurchases";
 import { Field, Form } from "react-final-form";
+import MaterialTable from 'material-table';
 
 class PurchasesFormation extends Component {
     state = {
@@ -15,12 +16,14 @@ class PurchasesFormation extends Component {
     }
 
     onSubmit = (values) => {
-        this.props.loadPurchases(values.category);
-        this.setState({openTable: !this.state.openTable})
+        this.props.loadPurchases(values.category).then(
+            this.setState({openTable: true})
+        );
     }
 
     render() {
-        const {categories} = this.props;
+        const {openTable} = this.state;
+        const {categories, purchases, loading} = this.props;
 
         console.log(this.props.purchases);
         return (
@@ -44,6 +47,18 @@ class PurchasesFormation extends Component {
                           </form>
                       )}
                 />
+                {openTable && !loading &&
+                    <MaterialTable
+                        title="Список закупок"
+                        columns={[
+                            {title: 'Название', field: 'name',},
+                            {title: 'Код товара', field: 'code', width: 200,},
+                            {title: 'Цена', field: 'price', width: 200,},
+                            {title: 'Количество', field: 'count', width: 200,},
+                            {title: 'Заказы', field: 'solded', width: 200,},
+                        ]}
+                        data={ purchases }/>
+                }
             </div>
         );
     }
@@ -53,6 +68,7 @@ export default withRouter(connect(
     (store) => ({
         categories: store.category.list,
         purchases: store.purchase.item,
+        loading: store.purchase.loading,
     }),
     (dispatch) => ({
         loadCategories: () => dispatch(loadCategories()),
