@@ -25,7 +25,6 @@ class PurchasesFormation extends Component {
         const {openTable} = this.state;
         const {categories, purchases, loading} = this.props;
 
-        console.log(this.props.purchases);
         return (
             <div className='contentBlock'>
                 <h3 className='pt-4 pb-4'>Формирование списка закупок</h3>
