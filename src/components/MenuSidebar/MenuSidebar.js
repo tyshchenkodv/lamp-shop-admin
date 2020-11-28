@@ -33,6 +33,10 @@ export default class MenuSidebar extends PureComponent{
                                 <NavLink exact to="/articles">
                                     <i className="zmdi zmdi-file-text"/>Статьи</NavLink>
                             </li>
+                            <li>
+                                <NavLink exact to="/purchasesFormation">
+                                    <i className="zmdi zmdi-collection-text"/>Формирование закупок</NavLink>
+                            </li>
                         </ul>
                     </nav>
                 </div>
