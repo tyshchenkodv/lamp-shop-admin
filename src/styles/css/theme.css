@@ -50,6 +50,8 @@ Notes:	decreasing heading by 0.4em with every subsequent heading level
 
 ul {
     margin: 0;
+    padding-left: 0;
+    list-style: none;
 }
 
 button,
@@ -336,6 +338,11 @@ section {
     height: 100vh;
 }
 
+.page-content--bge5 .container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .login-wrap {
     max-width: 540px;
     padding-top: 8vh;
@@ -347,37 +354,8 @@ section {
     margin-bottom: 30px;
 }
 
-.login-checkbox {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -moz-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-}
-
-.login-checkbox label input[type="checkbox"] {
-    margin-right: 8px;
-}
-
-.login-checkbox > label > a {
-    color: #ff2e44;
-}
-
-@media (max-width: 991px) {
-    .login-checkbox {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-        -moz-box-orient: vertical;
-        -moz-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-    }
+.form-group {
+    padding: 10px 0;
 }
 
 .login-form .form-group label {
@@ -448,6 +426,7 @@ section {
 .au-btn {
     line-height: 45px;
     padding: 0 35px;
+    margin-top: 10px;
     text-transform: uppercase;
     color: #fff;
     -webkit-border-radius: 3px;
@@ -1244,12 +1223,13 @@ section {
     -webkit-align-items: center;
     -moz-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
+    align-items: flex-end;
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
     -moz-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    flex-direction: column-reverse;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -1346,6 +1326,7 @@ section {
     margin-right: 35px;
     display: inline-block;
     cursor: pointer;
+    float: right;
 }
 
 @media (max-width: 1200px) {
@@ -1420,9 +1401,7 @@ section {
 }
 
 .account-item > .content {
-    margin-left: 45px;
     padding: 9px 0;
-    padding-left: 12px;
 }
 
 .account-item > .content > a {
@@ -1487,9 +1466,7 @@ section {
 }
 
 .account-dropdown .info .content {
-    margin-left: 65px;
     padding: 11px 0;
-    padding-left: 12px;
 }
 
 .account-dropdown .info .content .name {
@@ -1557,19 +1534,21 @@ section {
     border-top: 1px solid #f2f2f2;
 }
 
-.account-dropdown__footer a {
+.account-dropdown__footer button {
     display: block;
     color: #333;
     padding: 15px 25px;
     font-size: 14px;
+    width: 100%;
+    text-align: left;
 }
 
-.account-dropdown__footer a:hover {
+.account-dropdown__footer button:hover {
     background: #4272d7;
     color: #fff;
 }
 
-.account-dropdown__footer a i {
+.account-dropdown__footer button i {
     line-height: 1;
     margin-right: 20px;
     font-size: 18px;
@@ -1634,6 +1613,7 @@ section {
     color: #555;
     font-size: 16px;
     padding: 15px 0;
+    text-decoration: none;
 }
 
 .navbar-sidebar .navbar__list li a i {
@@ -1882,7 +1862,7 @@ section {
     -moz-transform-origin: left top;
     -ms-transform-origin: left top;
     -o-transform-origin: left top;
-    transform-origin: left top;
+    transform-origin: right top;
     top: 100%;
     left: 0;
 }
@@ -1931,7 +1911,8 @@ section {
 
 .mess-dropdown {
     top: 49px;
-    left: -55px;
+    left: auto;
+    right: 0;
 }
 
 .mess__item {
